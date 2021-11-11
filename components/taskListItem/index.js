@@ -1,5 +1,5 @@
 const TaskListItem = () => {
-  return <h5>Пунккт первый</h5>;
+  return <h5>TaskListItem</h5>;
 };
 
 export default TaskListItem;

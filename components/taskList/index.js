@@ -3,7 +3,9 @@ import TaskListItem from "../taskListItem";
 const TaskList = () => {
   return (
     <>
-      <h3>Список задач</h3>
+      <h3>TaskList</h3>
+      <TaskListItem />
+      <TaskListItem />
       <TaskListItem />
     </>
   );
