@@ -1,5 +1,3 @@
-const TaskListItem = () => {
-  return <h5>TaskListItem</h5>;
-};
+const TaskListItem = () => {};
 
 export default TaskListItem;

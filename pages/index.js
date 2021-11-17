@@ -1,9 +1,7 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 import Layout from "@/components/Layout";
 import Header from "../components/Header";
-import TaskList from "../components/taskList";
+import TaskList from "../components/TaskList";
 import { Button } from "react-bootstrap";
 
 export default function Home() {
@@ -13,9 +11,20 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Сборщик данных</h1>
-        <TaskList />
+        <TaskList posts={posts} />
         <Button variant="info">Info</Button>{" "}
       </main>
     </Layout>
   );
 }
+
+const posts = [
+  {
+    id: 1,
+    title: "Привет, мир",
+  },
+  { id: 2, title: "Установка" },
+  { id: 3, title: "Работаем!" },
+  { id: 4, title: "Учимся!" },
+  { id: 5, title: "Треним!" },
+];
