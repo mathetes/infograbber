@@ -1,12 +1,15 @@
-import styles from "@/styles/TaskList.module.css";
+import React, { useState } from "react";
+import TaskItem from "../TaskItem";
 
-function TaskList(props) {
-  const content = props.posts.map((post) => (
-    <li key={post.id}>
-      <h3>{post.title}</h3>
-    </li>
-  ));
-  return <ul className={styles.tasklistitems}>{content}</ul>;
+function TaskList(todos) {
+  const [todos, setTodos] = useState([]);
+
+  const removeTodo = (id) => {
+    const removeArr = [...todos].filter((todo) => todo.id !== id);
+    setTodos(removeArr);
+  };
+
+  return <TaskItem todos={todos} removeTodo={removeTodo} />;
 }
 
 export default TaskList;

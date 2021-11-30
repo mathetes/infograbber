@@ -18,7 +18,7 @@ export default function Home() {
   );
 }
 
-const posts = [
+const todos = [
   {
     id: 1,
     title: "Привет, мир",
