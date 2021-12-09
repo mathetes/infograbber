@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskItem from "../TaskItem";
 
-function TaskList(todos) {
+function TaskList() {
   const [todos, setTodos] = useState([]);
 
   const removeTodo = (id) => {
@@ -11,5 +11,7 @@ function TaskList(todos) {
 
   return <TaskItem todos={todos} removeTodo={removeTodo} />;
 }
+
+
 
 export default TaskList;

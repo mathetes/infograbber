@@ -1,0 +1,15 @@
+.itemBlock {
+    display: inline-flex;
+    width: 700px;
+    justify-content: space-between;
+    box-shadow: 10px 5px 5px #eee;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.icons {
+    margin-left: 30px;
+    font-size: 1.4em;
+    cursor: pointer;
+    padding-right: 10px;
+}

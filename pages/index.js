@@ -11,20 +11,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Сборщик данных</h1>
-        <TaskList posts={posts} />
-        <Button variant="info">Info</Button>{" "}
+        <TaskList />
       </main>
     </Layout>
   );
 }
 
-const todos = [
-  {
-    id: 1,
-    title: "Привет, мир",
-  },
-  { id: 2, title: "Установка" },
-  { id: 3, title: "Работаем!" },
-  { id: 4, title: "Учимся!" },
-  { id: 5, title: "Треним!" },
-];
+
