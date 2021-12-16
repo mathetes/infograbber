@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import styles from "@/styles/TaskItem.module.css";
 
 import { RiCloseCircleLine } from "react-icons/ri";
-
+import { TiEdit } from 'react-icons/ti'
 
 function TaskItem ({todos, removeTodo}) {
   
@@ -18,6 +18,8 @@ function TaskItem ({todos, removeTodo}) {
           onClick={() => removeTodo(todo.id)}
           className="delete-icon"
         />
+        <TiEdit
+          onClick={() => editTodo({ id: todo.id, value: todo.text })} className="edit-icon" />
       </div>
     </div>
   ));

@@ -1,21 +1,62 @@
-import React, { useState } from "react";
-import Button from "bootstrap/dist/css/bootstrap.min.css";
-import styles from "@/styles/Header.module.css";
+import React, { useState, useEffect, useRef } from 'react'
 
-const TaskForm = () => {
-  const [todos, setTodos] = useState([]);
+function TaskForm(props) {
+    const [input, setInput] = useState(props.edit ? props.edit.value : '');
+    const inputRef = useRef(null)
 
-  return (
-    <>
-      <input
-        className={styles.input}
-        type="text"
-        alt="input"
-        placeholder="Новая задача"
-      />
-      <Button>Добавить</Button>
-    </>
-  );
-};
+    useEffect(() => {
+        inputRef.current.focus()
+    });
+
+    const handleChange = e => {
+        setInput(e.target.value);
+    };
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        props.onSubmit({
+            id: Math.floor(Math.random() * 10000),
+            text: input
+        });
+        setInput('');
+    };
+
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit} className="todo-form">
+                {props.edit ? (
+                    <>
+                        <input type="text"
+                            placeholder="Edit a todo item"
+                            value={input}
+                            name="text"
+                            className="todo-input edit"
+                            onChange={handleChange}
+                            ref={inputRef} />
+                        <button  onSubmit={handleSubmit} className="todo-button">Update</button>
+                    </>
+                ) :
+                    (
+                        <>
+                            <input type="text"
+                                placeholder="Add a todo item"
+                                value={input}
+                                name="text"
+                                className="todo-input"
+                                onChange={handleChange}
+                                ref={inputRef} />
+                            <button onSubmit={handleSubmit} className="todo-button">Add todo</button>
+                        </>
+                    )
+                }
+
+
+            </form>
+
+        </div>
+    )
+}
+
 
 export default TaskForm;
