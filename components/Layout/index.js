@@ -7,13 +7,13 @@ import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "@/styles/Layout.module.css";
 
-export default function Layout({ title, keywords, description, children }) {
+export default function Layout({ text, keywords, description, children }) {
   const router = useRouter();
 
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>{text}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
       </Head>
@@ -26,7 +26,7 @@ export default function Layout({ title, keywords, description, children }) {
 }
 
 Layout.defaultProps = {
-  title: "InfoGrabber like ToDo App",
+  text: "InfoGrabber like ToDo App",
   description: "Find the latest DJ and other musical events",
   keywords: "music, dj, edm, events",
 };

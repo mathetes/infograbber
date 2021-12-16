@@ -9,13 +9,13 @@ function TaskList() {
  
       {
         id: 1,
-        title: "Привет, мир",
+        text: "Привет, мир",
       },
-      { id: 2, title: "Установка" },
-      { id: 3, title: "Работаем!" },
-      { id: 4, title: "Учимся!" },
-      { id: 5, title: "Треним!" },
-      { id: 6, title: "Всем пока!" },
+      { id: 2, text: "Установка" },
+      { id: 3, text: "Работаем!" },
+      { id: 4, text: "Учимся!" },
+      { id: 5, text: "Треним!" },
+      { id: 6, text: "Всем пока!" },
 
   ]);
 
@@ -40,16 +40,36 @@ function TaskList() {
   };
 
 
-  const removeTodo = (id) => {
-    const removeArr = [...todos].filter((todo) => todo.id !== id);
+  const updateTodo = (todoId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+        return;
+    }
+
+    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+};
+
+const removeTodo = id => {
+    const removeArr = [...todos].filter(todo => todo.id !== id)
+
     setTodos(removeArr);
-  };
-  
+};
+
+const completeTodo = id => {
+    let updatedTodos = todos.map(todo => {
+        if (todo.id === id) {
+            todo.isComplete = !todo.isComplete;
+        }
+        return todo;
+    });
+    setTodos(updatedTodos);
+};
+
 
   return (
     <>
       <TaskForm onSubmit={addTodo} />
-      <TaskItem todos={todos} removeTodo={removeTodo} />
+      <TaskItem todos={todos} completeTodo={completeTodo}
+        removeTodo={removeTodo} updateTodo={updateTodo}  />
       <Modal className="modal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <h2>Ooops!</h2>
           <p>It's look like you already add this task...</p>

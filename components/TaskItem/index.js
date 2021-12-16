@@ -4,14 +4,29 @@ import styles from "@/styles/TaskItem.module.css";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from 'react-icons/ti'
 
-function TaskItem ({todos, removeTodo}) {
-  
+function TaskItem ({ todos, completeTodo, removeTodo, updateTodo }){
+  const [edit, editTodo] = useState({
+      id: null,
+      value: ''
+  });
+
+  const submitUpdate = value => {
+      updateTodo(edit.id, value)
+      editTodo({
+          id: null,
+          value: ''
+      })
+  }
+
+  if (edit.id) {
+      return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+  }
 
   return todos.map((todo, index) => (
     
     <div className={styles.itemBlock} key={index}>
       <div key={todo.id}>
-        <h3>{todo.title}</h3>
+        <h3>{todo.text}</h3>
       </div>
       <div className={styles.icons}>
         <RiCloseCircleLine
